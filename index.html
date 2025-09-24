@@ -55,14 +55,14 @@
 
  <!-- 숨은 iframe -->
 <iframe name="hidden_iframe" style="display:none;"></iframe>
-<form action="https://script.google.com/macros/s/AKfycbyBml4PFMh9pK1F74lSkqJ5br88gfB_2nyj4xphnX71vD1GL4LndaHz-DB-cGIWghOb/exec"
+<form action="https://script.google.com/macros/s/AKfycbyu8fvkB00S8lKrLMhozvdsFBqApVvCcFm2oA894FrBnIgQsRxNQ5smVNL2c_HtXcIB/execc"
       method="post" enctype="multipart/form-data" target="hidden_iframe">
   <input type="file" name="file" multiple accept="image/*,video/*">
   <button type="submit">업로드</button>
 </form>
 
   <script>
-    const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbyBml4PFMh9pK1F74lSkqJ5br88gfB_2nyj4xphnX71vD1GL4LndaHz-DB-cGIWghOb/exec"; // ← Apps Script 웹앱 URL
+    const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbyu8fvkB00S8lKrLMhozvdsFBqApVvCcFm2oA894FrBnIgQsRxNQ5smVNL2c_HtXcIB/exec"; // ← Apps Script 웹앱 URL
     document.getElementById('uform').setAttribute('action', WEBAPP_URL);
     document.getElementById('galleryBtn').href = WEBAPP_URL + "?gallery=1";
     const drop = document.getElementById('drop');
