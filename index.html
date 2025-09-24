@@ -1,106 +1,137 @@
 <!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Hyeyin/25.11.1. — Guest Pics Upload</title>
-  <meta name="description" content="JAEHEE 🩷HYEYIN WEDDING DAY — 하객 사진 업로드">
-  <style>
-    :root{
-      --primary:#C77FB7; /* 요청 컬러(보정) */
-      --ink:#0f172a;
-      --muted:#64748b;
-      --border:#e5e7eb;
-      --card:#ffffff;
-      --bg:#fafafc;
-    }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hyeyin/25.11.1. — Guest Pics Upload</title>
+  <meta name="description" content="JAEHEE 🩷HYEYIN WEDDING DAY — 하객 사진 업로드">
+  <style>
+    :root{
+      --primary:#C77FB7; /* 요청 컬러(보정) */
+      --ink:#0f172a;
+      --muted:#64748b;
+      --border:#e5e7eb;
+      --card:#ffffff;
+      --bg:#fafafc;
+    }
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0; background:var(--bg);
-      font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
-      color:var(--ink);
-      line-height:1.6;
-      display:flex; align-items:center; justify-content:center;
-      padding:24px;
-    }
-    .container{width:100%; max-width:720px; background:var(--card); border:1px solid var(--border); border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,.05); overflow:hidden;}
-    .hero{padding:28px 24px 16px; text-align:center; border-bottom:1px solid var(--border); background:linear-gradient(180deg, rgba(199,127,183,.12), transparent 60%);}
-    .tag{display:inline-block;font-size:.9rem; letter-spacing:.02em;color:#fff; background:var(--primary); padding:6px 12px; border-radius:999px;}
-    h1{margin:14px 0 6px; font-size:1.55rem; font-weight:700; letter-spacing:.01em;}
-    .sub{margin:0; color:var(--muted)}
-    .content{padding:20px}
-    .row{display:flex; gap:8px; flex-wrap:wrap; justify-content:center}
-    .card{border:2px dashed #cbd5e1; border-radius:16px; padding:22px; text-align:center; transition:.2s; background:#fff}
-    .card.on{background:#f8fafc; border-color:#94a3b8}
-    .btn{display:inline-block; padding:12px 18px; border-radius:12px; border:1px solid #e2e8f0; background:var(--primary); color:#fff; font-weight:600; cursor:pointer; text-decoration:none;}
-    .btn.secondary{background:#fff; color:var(--primary); border-color:var(--primary)}
-    .btn.link{background:#fff; color:#0f172a}
-    .muted{color:var(--muted); font-size:.95rem}
-    #log > div{padding:8px 12px; border:1px solid var(--border); border-radius:12px; margin:8px 0; background:#fff; text-align:left; word-break:break-all;}
-    .footer{padding:14px 20px; font-size:.9rem; color:var(--muted); border-top:1px solid var(--border); text-align:center;}
-    #hidden_iframe{display:none}
-  </style>
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; background:var(--bg);
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+      color:var(--ink);
+      line-height:1.6;
+      display:flex; align-items:center; justify-content:center;
+      padding:24px;
+    }
+    .container{width:100%; max-width:720px; background:var(--card); border:1px solid var(--border); border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,.05); overflow:hidden;}
+    .hero{padding:28px 24px 16px; text-align:center; border-bottom:1px solid var(--border); background:linear-gradient(180deg, rgba(199,127,183,.12), transparent 60%);}
+    .tag{display:inline-block;font-size:.9rem; letter-spacing:.02em;color:#fff; background:var(--primary); padding:6px 12px; border-radius:999px;}
+    h1{margin:14px 0 6px; font-size:1.55rem; font-weight:700; letter-spacing:.01em;}
+    .sub{margin:0; color:var(--muted)}
+    .content{padding:20px}
+    .row{display:flex; gap:8px; flex-wrap:wrap; justify-content:center}
+    .card{border:2px dashed #cbd5e1; border-radius:16px; padding:22px; text-align:center; transition:.2s; background:#fff}
+    .card.on{background:#f8fafc; border-color:#94a3b8}
+    .btn{display:inline-block; padding:12px 18px; border-radius:12px; border:1px solid #e2e8f0; background:var(--primary); color:#fff; font-weight:600; cursor:pointer; text-decoration:none;}
+    .btn.secondary{background:#fff; color:var(--primary); border-color:var(--primary)}
+    .btn.link{background:#fff; color:#0f172a}
+    .muted{color:var(--muted); font-size:.95rem}
+    #log > div{padding:8px 12px; border:1px solid var(--border); border-radius:12px; margin:8px 0; background:#fff; text-align:left; word-break:break-all;}
+    .footer{padding:14px 20px; font-size:.9rem; color:var(--muted); border-top:1px solid var(--border); text-align:center;}
+    #hidden_iframe{display:none}
+  </style>
 </head>
 
 <body>
-  <div class="container">
-    <div class="hero">
-      <span class="tag">Hyeyin/25.11.1.</span>
-      <h1>JAEHEE 🩷HYEYIN WEDDING DAY</h1>
-      <p class="sub">하객 여러분의 소중한 사진을 올려주세요. 원본 그대로 저장됩니다.</p>
-    </div>
-    <div class="content">
+  <div class="container">
+    <div class="hero">
+      <span class="tag">Hyeyin/25.11.1.</span>
+      <h1>JAEHEE 🩷HYEYIN WEDDING DAY</h1>
+      <p class="sub">하객 여러분의 소중한 사진을 올려주세요. 원본 그대로 저장됩니다.</p>
+    </div>
+    <div class="content">
+        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+        <form id="uform" method="post" enctype="multipart/form-data" target="hidden_iframe">
+            <div id="drop" class="card">
+                <p class="muted">이곳에 사진/동영상을 끌어다 놓거나<br>아래 버튼을 눌러 파일을 선택하세요.</p>
+                <label class="btn secondary" for="file">📂 파일 선택</label>
+                <input type="file" name="files" id="file" multiple accept="image/*,video/*" style="display:none;" />
+            </div>
+            <div id="log" style="margin-top:16px;"></div>
+            <div class="row" style="margin-top:16px;">
+                <button type="submit" class="btn">🚀 선택한 사진 업로드</button>
+                <a id="galleryBtn" class="btn link" href="#" target="_blank">🖼️ 갤러리 보기</a>
+            </div>
+        </form>
+        </div>
+    <div class="footer">
+        Provided by JH WED Guest Pics Uploader
+    </div>
+  </div>
 
- <!-- 숨은 iframe -->
-<iframe name="hidden_iframe" style="display:none;"></iframe>
-<form action="https://script.google.com/macros/s/AKfycbyu8fvkB00S8lKrLMhozvdsFBqApVvCcFm2oA894FrBnIgQsRxNQ5smVNL2c_HtXcIB/execc"
-      method="post" enctype="multipart/form-data" target="hidden_iframe">
-  <input type="file" name="file" multiple accept="image/*,video/*">
-  <button type="submit">업로드</button>
-</form>
+  <script>
+    const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbyBml4PFMh9pK1F74lSkqJ5br88gfB_2nyj4xphnX71vD1GL4LndaHz-DB-cGIWghOb/exec"; // ← Apps Script 웹앱 URL
+    const uform = document.getElementById('uform');
+    uform.setAttribute('action', WEBAPP_URL);
+    
+    document.getElementById('galleryBtn').href = WEBAPP_URL + "?gallery=1";
+    
+    const drop = document.getElementById('drop');
+    const input = document.getElementById('file');
+    const log = document.getElementById('log');
+    const ifr = document.getElementById('hidden_iframe');
 
-  <script>
-    const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbyu8fvkB00S8lKrLMhozvdsFBqApVvCcFm2oA894FrBnIgQsRxNQ5smVNL2c_HtXcIB/exec"; // ← Apps Script 웹앱 URL
-    document.getElementById('uform').setAttribute('action', WEBAPP_URL);
-    document.getElementById('galleryBtn').href = WEBAPP_URL + "?gallery=1";
-    const drop = document.getElementById('drop');
-    const input = document.getElementById('file');
-    const form = document.getElementById('uform');
-    const log = document.getElementById('log');
-    const ifr = document.getElementById('hidden_iframe');
+    ['dragenter','dragover'].forEach(evt => drop.addEventListener(evt, e => { e.preventDefault(); drop.classList.add('on'); }));
+    ['dragleave','drop'].forEach(evt => drop.addEventListener(evt, e => { e.preventDefault(); drop.classList.remove('on'); }));
+    
+    drop.addEventListener('drop', e => { 
+        input.files = e.dataTransfer.files; 
+        showSelection(); 
+    });
+    
+    input.addEventListener('change', showSelection);
+    
+    function showSelection(){
+      // 이전 대기 목록 지우기
+      log.innerHTML = '';
+      [...input.files].forEach(f => {
+        const item = document.createElement('div');
+        item.textContent = `대기 중: ${f.name} (${Math.round(f.size/1024)} KB)`;
+        item.dataset.name = f.name;
+        log.prepend(item);
+      });
+    }
 
-    ['dragenter','dragover'].forEach(evt => drop.addEventListener(evt, e => { e.preventDefault(); drop.classList.add('on'); }));
-    ['dragleave','drop'].forEach(evt => drop.addEventListener(evt, e => { e.preventDefault(); drop.classList.remove('on'); }));
-    drop.addEventListener('drop', e => { input.files = e.dataTransfer.files; showSelection(); });
-    input.addEventListener('change', showSelection);
-    function showSelection(){
-      [...input.files].forEach(f => {
-        const item = document.createElement('div');
-        item.textContent = `대기 중: ${f.name} (${Math.round(f.size/1024)} KB)`;
-        item.dataset.name = f.name;
-        log.prepend(item);
-      });
-    }
+    uform.addEventListener('submit', (e) => {
+        // 파일이 선택되지 않았으면 업로드 막기
+        if (input.files.length === 0) {
+            alert('업로드할 파일을 선택해주세요!');
+            e.preventDefault();
+            return;
+        }
 
-    form.addEventListener('submit', () => {
-      [...input.files].forEach(f => {
-        const item = [...log.children].find(n => n.dataset.name === f.name);
-        if (item) item.textContent = `업로드 중: ${f.name} …`;
-      });
+      [...input.files].forEach(f => {
+        const item = [...log.children].find(n => n.dataset.name === f.name);
+        if (item) item.textContent = `업로드 중: ${f.name} …`;
+      });
 
-      const onLoad = () => {
-        [...input.files].forEach(f => {
-          const item = [...log.children].find(n => n.dataset.name === f.name);
-          if (item) item.textContent = `완료 ✅ ${f.name}`;
-        });
-        input.value = '';
-        ifr.removeEventListener('load', onLoad);
-      };
-      ifr.addEventListener('load', onLoad);
-    });
-  </script>
+      const onLoad = () => {
+        [...input.files].forEach(f => {
+          const item = [...log.children].find(n => n.dataset.name === f.name);
+          if (item) item.textContent = `완료 ✅ ${f.name}`;
+        });
+        input.value = '';
+        ifr.removeEventListener('load', onLoad);
+        
+        // 3초 후 완료 메시지 지우기
+        setTimeout(() => {
+            log.innerHTML = '';
+        }, 3000);
+      };
+      ifr.addEventListener('load', onLoad);
+    });
+  </script>
 </body>
-
-    </html>
+</html>
