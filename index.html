@@ -1,126 +1,223 @@
 <!doctype html>
+
 <html lang="ko">
+
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Hyeyin/25.11.1. — Guest Pics Upload</title>
-  <meta name="description" content="JAEHEE 🩷HYEYIN WEDDING DAY — 하객 사진 업로드">
-  <style>
-    :root{
-      --primary:#C77FB7; /* 요청 컬러(보정) */
-      --ink:#0f172a;
-      --muted:#64748b;
-      --border:#e5e7eb;
-      --card:#ffffff;
-      --bg:#fafafc;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0; background:var(--bg);
-      font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
-      color:var(--ink);
-      line-height:1.6;
-      display:flex; align-items:center; justify-content:center;
-      padding:24px;
-    }
-    .container{width:100%; max-width:720px; background:var(--card); border:1px solid var(--border); border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,.05); overflow:hidden;}
-    .hero{padding:28px 24px 16px; text-align:center; border-bottom:1px solid var(--border); background:linear-gradient(180deg, rgba(199,127,183,.12), transparent 60%);}
-    .tag{display:inline-block;font-size:.9rem; letter-spacing:.02em;color:#fff; background:var(--primary); padding:6px 12px; border-radius:999px;}
-    h1{margin:14px 0 6px; font-size:1.55rem; font-weight:700; letter-spacing:.01em;}
-    .sub{margin:0; color:var(--muted)}
-    .content{padding:20px}
-    .row{display:flex; gap:8px; flex-wrap:wrap; justify-content:center}
-    .card{border:2px dashed #cbd5e1; border-radius:16px; padding:22px; text-align:center; transition:.2s; background:#fff}
-    .card.on{background:#f8fafc; border-color:#94a3b8}
-    .btn{display:inline-block; padding:12px 18px; border-radius:12px; border:1px solid #e2e8f0; background:var(--primary); color:#fff; font-weight:600; cursor:pointer; text-decoration:none;}
-    .btn.secondary{background:#fff; color:var(--primary); border-color:var(--primary)}
-    .btn.link{background:#fff; color:#0f172a}
-    .muted{color:var(--muted); font-size:.95rem}
-    #log > div{padding:8px 12px; border:1px solid var(--border); border-radius:12px; margin:8px 0; background:#fff; text-align:left; word-break:break-all;}
-    .footer{padding:14px 20px; font-size:.9rem; color:var(--muted); border-top:1px solid var(--border); text-align:center;}
-    #hidden_iframe{display:none}
-  </style>
+
+  <meta charset="utf-8" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <title>Hyeyin/25.11.1. — Guest Pics Upload</title>
+
+  <meta name="description" content="JAEHEE 🩷HYEYIN WEDDING DAY — 하객 사진 업로드">
+
+  <style>
+
+    :root{
+
+      --primary:#C77FB7; /* 요청 컬러(보정) */
+
+      --ink:#0f172a;
+
+      --muted:#64748b;
+
+      --border:#e5e7eb;
+
+      --card:#ffffff;
+
+      --bg:#fafafc;
+
+    }
+
+    *{box-sizing:border-box}
+
+    html,body{height:100%}
+
+    body{
+
+      margin:0; background:var(--bg);
+
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+
+      color:var(--ink);
+
+      line-height:1.6;
+
+      display:flex; align-items:center; justify-content:center;
+
+      padding:24px;
+
+    }
+
+    .container{width:100%; max-width:720px; background:var(--card); border:1px solid var(--border); border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,.05); overflow:hidden;}
+
+    .hero{padding:28px 24px 16px; text-align:center; border-bottom:1px solid var(--border); background:linear-gradient(180deg, rgba(199,127,183,.12), transparent 60%);}
+
+    .tag{display:inline-block;font-size:.9rem; letter-spacing:.02em;color:#fff; background:var(--primary); padding:6px 12px; border-radius:999px;}
+
+    h1{margin:14px 0 6px; font-size:1.55rem; font-weight:700; letter-spacing:.01em;}
+
+    .sub{margin:0; color:var(--muted)}
+
+    .content{padding:20px}
+
+    .row{display:flex; gap:8px; flex-wrap:wrap; justify-content:center}
+
+    .card{border:2px dashed #cbd5e1; border-radius:16px; padding:22px; text-align:center; transition:.2s; background:#fff}
+
+    .card.on{background:#f8fafc; border-color:#94a3b8}
+
+    .btn{display:inline-block; padding:12px 18px; border-radius:12px; border:1px solid #e2e8f0; background:var(--primary); color:#fff; font-weight:600; cursor:pointer; text-decoration:none;}
+
+    .btn.secondary{background:#fff; color:var(--primary); border-color:var(--primary)}
+
+    .btn.link{background:#fff; color:#0f172a}
+
+    .muted{color:var(--muted); font-size:.95rem}
+
+    #log > div{padding:8px 12px; border:1px solid var(--border); border-radius:12px; margin:8px 0; background:#fff; text-align:left; word-break:break-all;}
+
+    .footer{padding:14px 20px; font-size:.9rem; color:var(--muted); border-top:1px solid var(--border); text-align:center;}
+
+    #hidden_iframe{display:none}
+
+  </style>
+
 </head>
+
 <body>
-  <div class="container">
-    <div class="hero">
-      <span class="tag">Hyeyin/25.11.1.</span>
-      <h1>JAEHEE 🩷HYEYIN WEDDING DAY</h1>
-      <p class="sub">하객 여러분의 소중한 사진을 올려주세요. 원본 그대로 저장됩니다.</p>
-    </div>
 
-    <div class="content">
-      <!-- 숨은 iframe: 폼 제출 후 페이지 이탈 방지 -->
-      <iframe name="hidden_iframe" id="hidden_iframe"></iframe>
+  <div class="container">
 
-      <div id="drop" class="card" aria-label="파일 드래그 앤 드롭 영역">
-        <form id="uform" action="WEBAPP_URL" method="post" enctype="multipart/form-data" target="hidden_iframe">
-          <input id="file" type="file" name="file" multiple accept="image/*,video/*" hidden>
+    <div class="hero">
 
-          <div style="margin-bottom:12px; font-weight:600;">여기로 사진/동영상을 드래그하거나 버튼으로 선택하세요</div>
-          <div class="row">
-            <button type="button" class="btn" onclick="document.getElementById('file').click()">파일 선택</button>
-            <button type="submit" class="btn secondary">업로드</button>
-            <!-- 갤러리/다운로드 열기 버튼 -->
-            <a id="galleryBtn" class="btn link" href="#" target="_blank" rel="noopener">갤러리 열기 ⬇︎</a>
-          </div>
-          <div class="muted" style="margin-top:10px">대용량 동영상은 Wi-Fi 권장 · 여러 파일을 한 번에 선택 가능</div>
-        </form>
-      </div>
+      <span class="tag">Hyeyin/25.11.1.</span>
 
-      <div style="margin-top:16px">
-        <b>업로드 상태</b>
-        <div id="log" aria-live="polite"></div>
-      </div>
-    </div>
+      <h1>JAEHEE 🩷HYEYIN WEDDING DAY</h1>
 
-    <div class="footer">
-      업로드가 끝나면 창을 닫아주세요. 감사합니다! 🩷
-    </div>
-  </div>
+      <p class="sub">하객 여러분의 소중한 사진을 올려주세요. 원본 그대로 저장됩니다.</p>
 
-  <script>
-    const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbyLJ35UzvdXjk7cpf1CtMieCdO8yTbch0Qmz_A-NlaVdzwv8rLoWMc-67JIFH1szSKS/exec
-"; // ← Apps Script 웹앱 URL
-    document.getElementById('uform').setAttribute('action', WEBAPP_URL);
-    document.getElementById('galleryBtn').href = WEBAPP_URL + "?gallery=1";
+    </div>
 
-    const drop = document.getElementById('drop');
-    const input = document.getElementById('file');
-    const form = document.getElementById('uform');
-    const log = document.getElementById('log');
-    const ifr = document.getElementById('hidden_iframe');
 
-    ['dragenter','dragover'].forEach(evt => drop.addEventListener(evt, e => { e.preventDefault(); drop.classList.add('on'); }));
-    ['dragleave','drop'].forEach(evt => drop.addEventListener(evt, e => { e.preventDefault(); drop.classList.remove('on'); }));
-    drop.addEventListener('drop', e => { input.files = e.dataTransfer.files; showSelection(); });
-    input.addEventListener('change', showSelection);
+    <div class="content">
 
-    function showSelection(){
-      [...input.files].forEach(f => {
-        const item = document.createElement('div');
-        item.textContent = `대기 중: ${f.name} (${Math.round(f.size/1024)} KB)`;
-        item.dataset.name = f.name;
-        log.prepend(item);
-      });
-    }
+ <!-- 숨은 iframe -->
 
-    form.addEventListener('submit', () => {
-      [...input.files].forEach(f => {
-        const item = [...log.children].find(n => n.dataset.name === f.name);
-        if (item) item.textContent = `업로드 중: ${f.name} …`;
-      });
-      const onLoad = () => {
-        [...input.files].forEach(f => {
-          const item = [...log.children].find(n => n.dataset.name === f.name);
-          if (item) item.textContent = `완료 ✅ ${f.name}`;
-        });
-        input.value = '';
-        ifr.removeEventListener('load', onLoad);
-      };
-      ifr.addEventListener('load', onLoad);
-    });
-  </script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
+
+<div id="drop" class="card">
+
+  <form
+
+    id="uform"
+
+    action="https://script.google.com/macros/s/AKfycbyLJ35UzvdXjk7cpf1CtMieCdO8yTbch0Qmz_A-NlaVdzwv8rLoWMc-67JIFH1szSKS/exec"
+
+    method="post"
+
+    enctype="multipart/form-data"
+
+    target="hidden_iframe">
+
+
+    <input id="file" type="file" name="file" multiple accept="image/*,video/*" hidden>
+
+    <div style="margin-bottom:12px; font-weight:600;">
+
+      여기로 사진/동영상을 드래그하거나 버튼으로 선택하세요
+
+    </div>
+
+    <button type="button" onclick="document.getElementById('file').click()">파일 선택</button>
+
+    <button type="submit">업로드</button>
+
+  </form>
+
+</div>
+
+
+  <script>
+
+    const WEBAPP_URL = "REPLACE_WITH_YOUR_APPS_SCRIPT_WEBAPP_URL"; // ← Apps Script 웹앱 URL
+
+    document.getElementById('uform').setAttribute('action', WEBAPP_URL);
+
+    document.getElementById('galleryBtn').href = WEBAPP_URL + "?gallery=1";
+
+
+    const drop = document.getElementById('drop');
+
+    const input = document.getElementById('file');
+
+    const form = document.getElementById('uform');
+
+    const log = document.getElementById('log');
+
+    const ifr = document.getElementById('hidden_iframe');
+
+
+    ['dragenter','dragover'].forEach(evt => drop.addEventListener(evt, e => { e.preventDefault(); drop.classList.add('on'); }));
+
+    ['dragleave','drop'].forEach(evt => drop.addEventListener(evt, e => { e.preventDefault(); drop.classList.remove('on'); }));
+
+    drop.addEventListener('drop', e => { input.files = e.dataTransfer.files; showSelection(); });
+
+    input.addEventListener('change', showSelection);
+
+
+    function showSelection(){
+
+      [...input.files].forEach(f => {
+
+        const item = document.createElement('div');
+
+        item.textContent = `대기 중: ${f.name} (${Math.round(f.size/1024)} KB)`;
+
+        item.dataset.name = f.name;
+
+        log.prepend(item);
+
+      });
+
+    }
+
+
+    form.addEventListener('submit', () => {
+
+      [...input.files].forEach(f => {
+
+        const item = [...log.children].find(n => n.dataset.name === f.name);
+
+        if (item) item.textContent = `업로드 중: ${f.name} …`;
+
+      });
+
+      const onLoad = () => {
+
+        [...input.files].forEach(f => {
+
+          const item = [...log.children].find(n => n.dataset.name === f.name);
+
+          if (item) item.textContent = `완료 ✅ ${f.name}`;
+
+        });
+
+        input.value = '';
+
+        ifr.removeEventListener('load', onLoad);
+
+      };
+
+      ifr.addEventListener('load', onLoad);
+
+    });
+
+  </script>
+
 </body>
-</html>
+
+    </html>
