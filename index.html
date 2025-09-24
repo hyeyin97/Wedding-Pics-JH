@@ -1,110 +1,59 @@
 <!doctype html>
-
 <html lang="ko">
-
 <head>
-
   <meta charset="utf-8" />
-
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-
   <title>Hyeyin/25.11.1. — Guest Pics Upload</title>
-
   <meta name="description" content="JAEHEE 🩷HYEYIN WEDDING DAY — 하객 사진 업로드">
-
   <style>
-
     :root{
-
       --primary:#C77FB7; /* 요청 컬러(보정) */
-
       --ink:#0f172a;
-
       --muted:#64748b;
-
       --border:#e5e7eb;
-
       --card:#ffffff;
-
       --bg:#fafafc;
-
     }
 
     *{box-sizing:border-box}
-
     html,body{height:100%}
-
     body{
-
       margin:0; background:var(--bg);
-
       font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
-
       color:var(--ink);
-
       line-height:1.6;
-
       display:flex; align-items:center; justify-content:center;
-
       padding:24px;
-
     }
-
     .container{width:100%; max-width:720px; background:var(--card); border:1px solid var(--border); border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,.05); overflow:hidden;}
-
     .hero{padding:28px 24px 16px; text-align:center; border-bottom:1px solid var(--border); background:linear-gradient(180deg, rgba(199,127,183,.12), transparent 60%);}
-
     .tag{display:inline-block;font-size:.9rem; letter-spacing:.02em;color:#fff; background:var(--primary); padding:6px 12px; border-radius:999px;}
-
     h1{margin:14px 0 6px; font-size:1.55rem; font-weight:700; letter-spacing:.01em;}
-
     .sub{margin:0; color:var(--muted)}
-
     .content{padding:20px}
-
     .row{display:flex; gap:8px; flex-wrap:wrap; justify-content:center}
-
     .card{border:2px dashed #cbd5e1; border-radius:16px; padding:22px; text-align:center; transition:.2s; background:#fff}
-
     .card.on{background:#f8fafc; border-color:#94a3b8}
-
     .btn{display:inline-block; padding:12px 18px; border-radius:12px; border:1px solid #e2e8f0; background:var(--primary); color:#fff; font-weight:600; cursor:pointer; text-decoration:none;}
-
     .btn.secondary{background:#fff; color:var(--primary); border-color:var(--primary)}
-
     .btn.link{background:#fff; color:#0f172a}
-
     .muted{color:var(--muted); font-size:.95rem}
-
     #log > div{padding:8px 12px; border:1px solid var(--border); border-radius:12px; margin:8px 0; background:#fff; text-align:left; word-break:break-all;}
-
     .footer{padding:14px 20px; font-size:.9rem; color:var(--muted); border-top:1px solid var(--border); text-align:center;}
-
     #hidden_iframe{display:none}
-
   </style>
-
 </head>
 
 <body>
-
   <div class="container">
-
     <div class="hero">
-
       <span class="tag">Hyeyin/25.11.1.</span>
-
       <h1>JAEHEE 🩷HYEYIN WEDDING DAY</h1>
-
       <p class="sub">하객 여러분의 소중한 사진을 올려주세요. 원본 그대로 저장됩니다.</p>
-
     </div>
-
-
     <div class="content">
 
  <!-- 숨은 iframe -->
-
 <iframe name="hidden_iframe" style="display:none;"></iframe>
 <form action="https://script.google.com/macros/s/…/exec"
       method="post" enctype="multipart/form-data" target="hidden_iframe">
@@ -113,83 +62,45 @@
 </form>
 
   <script>
-
-    const WEBAPP_URL = "REPLACE_WITH_YOUR_APPS_SCRIPT_WEBAPP_URL"; // ← Apps Script 웹앱 URL
-
+    const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbwdo3KjUNQ16JEyjJ_mWnFkX8aGQuRhLjqUJCmratAMCooP-LW0AiKG_gWdX6RTbBo-/exec"; // ← Apps Script 웹앱 URL
     document.getElementById('uform').setAttribute('action', WEBAPP_URL);
-
     document.getElementById('galleryBtn').href = WEBAPP_URL + "?gallery=1";
-
-
     const drop = document.getElementById('drop');
-
     const input = document.getElementById('file');
-
     const form = document.getElementById('uform');
-
     const log = document.getElementById('log');
-
     const ifr = document.getElementById('hidden_iframe');
 
-
     ['dragenter','dragover'].forEach(evt => drop.addEventListener(evt, e => { e.preventDefault(); drop.classList.add('on'); }));
-
     ['dragleave','drop'].forEach(evt => drop.addEventListener(evt, e => { e.preventDefault(); drop.classList.remove('on'); }));
-
     drop.addEventListener('drop', e => { input.files = e.dataTransfer.files; showSelection(); });
-
     input.addEventListener('change', showSelection);
-
-
     function showSelection(){
-
       [...input.files].forEach(f => {
-
         const item = document.createElement('div');
-
         item.textContent = `대기 중: ${f.name} (${Math.round(f.size/1024)} KB)`;
-
         item.dataset.name = f.name;
-
         log.prepend(item);
-
       });
-
     }
 
-
     form.addEventListener('submit', () => {
-
       [...input.files].forEach(f => {
-
         const item = [...log.children].find(n => n.dataset.name === f.name);
-
         if (item) item.textContent = `업로드 중: ${f.name} …`;
-
       });
 
       const onLoad = () => {
-
         [...input.files].forEach(f => {
-
           const item = [...log.children].find(n => n.dataset.name === f.name);
-
           if (item) item.textContent = `완료 ✅ ${f.name}`;
-
         });
-
         input.value = '';
-
         ifr.removeEventListener('load', onLoad);
-
       };
-
       ifr.addEventListener('load', onLoad);
-
     });
-
   </script>
-
 </body>
 
     </html>
